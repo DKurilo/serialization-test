@@ -1,0 +1,84 @@
+name:                fast-pipe
+version:             0.1.0.0
+github:              "DKurilo/fast-pipe"
+license:             BSD3
+author:              "Dima Kurilo"
+maintainer:          "dkurilo@gmail.com"
+copyright:           "Dima Kurilo"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/DKurilo/fast-pipe#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- bytestring
+- binary
+
+library:
+  source-dirs: src
+
+executables:
+  p1-c:
+    main:                p1-coerce.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -O2
+    dependencies:
+    - fast-pipe
+  p2-c:
+    main:                p2-coerce.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -O2
+    dependencies:
+    - fast-pipe
+  p1-b:
+    main:                p1-bytestring.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -O2
+    dependencies:
+    - fast-pipe
+    - bytestring
+    - binary
+  p2-b:
+    main:                p2-bytestring.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -O2
+    dependencies:
+    - fast-pipe
+    - bytestring
+    - binary
+tests:
+  fast-pipe-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - fast-pipe
